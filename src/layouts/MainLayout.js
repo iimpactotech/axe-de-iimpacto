@@ -11,12 +11,29 @@ export function renderLayout() {
         </div>
 
         <nav class="menu">
-          <button class="menu-item active"><i data-lucide="home"></i> Início</button>
-          <button class="menu-item"><i data-lucide="calendar-days"></i> Rituais</button>
-          <button class="menu-item"><i data-lucide="scroll-text"></i> Biblioteca</button>
-          <button class="menu-item"><i data-lucide="package"></i> Materiais</button>
-          <button class="menu-item"><i data-lucide="bar-chart-3"></i> Relatórios</button>
-          <button class="menu-item"><i data-lucide="settings"></i> Configurações</button>
+          <button class="menu-item active" data-route="dashboard">
+            <i data-lucide="home"></i> Início
+          </button>
+
+          <button class="menu-item" data-route="rituais">
+            <i data-lucide="calendar-days"></i> Rituais
+          </button>
+
+          <button class="menu-item" data-route="biblioteca">
+            <i data-lucide="book-open"></i> Biblioteca
+          </button>
+
+          <button class="menu-item" data-route="materiais">
+            <i data-lucide="package"></i> Materiais
+          </button>
+
+          <button class="menu-item" data-route="relatorios">
+            <i data-lucide="bar-chart-3"></i> Relatórios
+          </button>
+
+          <button class="menu-item" data-route="configuracoes">
+            <i data-lucide="settings"></i> Configurações
+          </button>
         </nav>
       </aside>
 
@@ -27,7 +44,7 @@ export function renderLayout() {
           </button>
 
           <div>
-            <h2>Início</h2>
+            <h2 id="page-title">Início</h2>
             <p>Organização é também um ato de fé e respeito.</p>
           </div>
         </header>
