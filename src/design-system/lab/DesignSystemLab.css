@@ -183,3 +183,13 @@
   gap: 12px;
   flex-wrap: wrap;
 }
+
+.ids-lab__nav-item.is-active {
+  color: var(--ii-color-text);
+  background: rgba(200, 155, 60, 0.16);
+  border-color: rgba(200, 155, 60, 0.35);
+}
+
+.ids-lab__content {
+  margin-top: 24px;
+}

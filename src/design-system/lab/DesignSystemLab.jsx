@@ -1,21 +1,63 @@
-import { Palette, Type, MousePointerClick, Box, Keyboard, Table, PanelsTopLeft, UserCircle, Settings } from "lucide-react";
+import { useState } from "react";
+import {
+  Palette,
+  Type,
+  MousePointerClick,
+  Box,
+  Keyboard,
+  Table,
+  PanelsTopLeft,
+  UserCircle,
+  Settings,
+} from "lucide-react";
+
 import Button from "../components/Button";
+import ColorsPage from "../foundations/Colors";
 import { appConfig } from "../../config/appConfig";
 import "./DesignSystemLab.css";
 
 const sections = [
-  { label: "Cores", icon: Palette },
-  { label: "Tipografia", icon: Type },
-  { label: "Buttons", icon: MousePointerClick },
-  { label: "Cards", icon: Box },
-  { label: "Inputs", icon: Keyboard },
-  { label: "Tables", icon: Table },
-  { label: "Modals", icon: PanelsTopLeft },
-  { label: "Avatar", icon: UserCircle },
-  { label: "Tokens", icon: Settings },
+  { id: "colors", label: "Cores", icon: Palette },
+  { id: "typography", label: "Tipografia", icon: Type },
+  { id: "buttons", label: "Buttons", icon: MousePointerClick },
+  { id: "cards", label: "Cards", icon: Box },
+  { id: "inputs", label: "Inputs", icon: Keyboard },
+  { id: "tables", label: "Tables", icon: Table },
+  { id: "modals", label: "Modals", icon: PanelsTopLeft },
+  { id: "avatar", label: "Avatar", icon: UserCircle },
+  { id: "tokens", label: "Tokens", icon: Settings },
 ];
 
+function ButtonsPreview() {
+  return (
+    <section className="ids-lab__panel">
+      <div className="ids-lab__panel-header">
+        <div>
+          <h3>Buttons</h3>
+          <p>Primeiro componente oficial do IImpacto Design System.</p>
+        </div>
+      </div>
+
+      <div className="ids-lab__component-row">
+        <Button>Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="danger">Danger</Button>
+        <Button size="sm">Small</Button>
+        <Button size="lg">Large</Button>
+        <Button disabled>Disabled</Button>
+      </div>
+    </section>
+  );
+}
+
 export default function DesignSystemLab() {
+  const [activeSection, setActiveSection] = useState("colors");
+
+  const currentSection = {
+    colors: <ColorsPage />,
+    buttons: <ButtonsPreview />,
+  };
+
   return (
     <div className="ids-lab">
       <aside className="ids-lab__sidebar">
@@ -32,7 +74,13 @@ export default function DesignSystemLab() {
             const Icon = section.icon;
 
             return (
-              <button key={section.label} className="ids-lab__nav-item">
+              <button
+                key={section.id}
+                className={`ids-lab__nav-item ${
+                  activeSection === section.id ? "is-active" : ""
+                }`}
+                onClick={() => setActiveSection(section.id)}
+              >
                 <Icon size={18} />
                 <span>{section.label}</span>
               </button>
@@ -72,22 +120,13 @@ export default function DesignSystemLab() {
           </div>
         </section>
 
-        <section className="ids-lab__panel">
-          <div className="ids-lab__panel-header">
-            <div>
-              <h3>Buttons</h3>
-              <p>Primeiro componente oficial do IImpacto Design System.</p>
-            </div>
-          </div>
-
-          <div className="ids-lab__component-row">
-            <Button>Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="danger">Danger</Button>
-            <Button size="sm">Small</Button>
-            <Button size="lg">Large</Button>
-            <Button disabled>Disabled</Button>
-          </div>
+        <section className="ids-lab__content">
+          {currentSection[activeSection] || (
+            <section className="ids-lab__panel">
+              <h3>Em construção</h3>
+              <p>Esta seção será adicionada em breve.</p>
+            </section>
+          )}
         </section>
       </main>
     </div>
