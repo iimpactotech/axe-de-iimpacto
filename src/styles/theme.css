@@ -1,21 +1,51 @@
+@import url("./variables.css");
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(46, 125, 91, 0.18), transparent 35%),
-    linear-gradient(135deg, #eef8f3, #ffffff 45%, #e7f3ee);
-  color: var(--color-text);
+html,
+body,
+#root {
+  height: 100%;
 }
 
-button {
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 15px;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
   font-family: inherit;
 }
 
-svg {
-  width: 20px;
-  height: 20px;
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 20px;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: black;
 }
