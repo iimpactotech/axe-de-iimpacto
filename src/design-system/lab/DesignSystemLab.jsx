@@ -13,6 +13,7 @@ import {
 
 import Button from "../components/Button";
 import ColorsPage from "../foundations/Colors";
+import ButtonsPage from "../foundations/Buttons";
 import { appConfig } from "../../config/appConfig";
 import "./DesignSystemLab.css";
 
@@ -28,35 +29,15 @@ const sections = [
   { id: "tokens", label: "Tokens", icon: Settings },
 ];
 
-function ButtonsPreview() {
-  return (
-    <section className="ids-lab__panel">
-      <div className="ids-lab__panel-header">
-        <div>
-          <h3>Buttons</h3>
-          <p>Primeiro componente oficial do IImpacto Design System.</p>
-        </div>
-      </div>
 
-      <div className="ids-lab__component-row">
-        <Button>Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="danger">Danger</Button>
-        <Button size="sm">Small</Button>
-        <Button size="lg">Large</Button>
-        <Button disabled>Disabled</Button>
-      </div>
-    </section>
-  );
-}
 
 export default function DesignSystemLab() {
   const [activeSection, setActiveSection] = useState("colors");
 
-  const currentSection = {
-    colors: <ColorsPage />,
-    buttons: <ButtonsPreview />,
-  };
+const currentSection = {
+  colors: <ColorsPage />,
+  buttons: <ButtonsPage />,
+};
 
   return (
     <div className="ids-lab">
